@@ -1,56 +1,44 @@
+require 'image'
+
 class BitmapEditor
-  def number_of_cols(bitmap)
-    bitmap.first.size
-  end
-
-  def number_of_rows(bitmap)
-    bitmap.size
-  end
-
   def init_bitmap(args)
     cols, rows = args
     rows = rows.to_i
     cols = cols.to_i
 
-    Array.new(rows) { Array.new(cols) {'O'}}
+    Image.new(rows, cols)
   end
 
   def clear(args, bitmap)
-    rows = number_of_rows(bitmap)
-    cols = number_of_cols(bitmap)
-    Array.new(rows) { Array.new(cols) {'O'}}
+    bitmap.clear
   end
 
   def insert(args, bitmap)
     col, row, colour = args
-    row = row.to_i - 1
-    col = col.to_i - 1
 
-    bitmap[row][col] = colour
+    bitmap.insert(row, col, colour)
   end
 
   def vertical_insert(args, bitmap)
     col, start_row, end_row, colour = args
-    start_row = start_row.to_i - 1
-    end_row = end_row.to_i - 1
-    col = col.to_i - 1
+    start_row = start_row.to_i
+    end_row = end_row.to_i
+    col = col.to_i
 
-    (start_row..end_row).each {|row| bitmap[row][col] = colour }
+    (start_row..end_row).each {|row| bitmap.insert(row, col, colour) }
   end
 
   def horizontal_insert(args, bitmap)
     start_col, end_col, row, colour = args
-    row = row.to_i - 1
-    start_col = start_col.to_i - 1
-    end_col = end_col.to_i - 1
+    row = row.to_i
+    start_col = start_col.to_i
+    end_col = end_col.to_i
 
-    (start_col..end_col).each {|col| bitmap[row][col] = colour }
+    (start_col..end_col).each {|col| bitmap.insert(row, col, colour) }
   end
 
   def show(args, bitmap)
-    bitmap.each do |row|
-      puts row.join
-    end
+    bitmap.print
   end
 
   def run(file)
@@ -60,22 +48,22 @@ class BitmapEditor
       line = line.chomp.split(' ')
       command = line.first
       args = line.drop(1)
-      current_bitmap = []
+      bitmap = nil
       case command
         when 'I'
-          current_bitmap = init_bitmap(args)
+          bitmap = init_bitmap(args)
         when 'C'
-          current_bitmap = clear(args, current_bitmap)
+          clear(args, bitmap)
         when 'L'
-          insert(args, current_bitmap)
+          insert(args, bitmap)
         when 'V'
-          vertical_insert(args, current_bitmap)
+          vertical_insert(args, bitmap)
         when 'H'
-          horizontal_insert(args, current_bitmap)
+          horizontal_insert(args, bitmap)
         when 'S'
-          show(args, current_bitmap)
+          show(args, bitmap)
         else
-            puts 'unrecognised command :('
+          puts 'unrecognised command :('
         end
     end
   end
