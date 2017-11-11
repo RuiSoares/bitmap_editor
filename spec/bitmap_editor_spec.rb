@@ -221,4 +221,8 @@ describe BitmapEditor do
       end
     end
   end
+
+  describe 'run' do
+    #TODO read from examples test, compare to examples results
+  end
 end
