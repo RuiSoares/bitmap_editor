@@ -18,7 +18,7 @@ class Image
   end
 
   def print
-    @pixels.each do |row|
+    pixels.each do |row|
       puts row.join
     end
   end
@@ -33,5 +33,12 @@ class Image
 
   def pixels
     @pixels
+  end
+
+  def in_range?(start_row, end_row, start_col, end_col)
+    start_row > 0 &&
+    end_row <= rows &&
+    start_col > 0 &&
+    end_col <= cols
   end
 end
