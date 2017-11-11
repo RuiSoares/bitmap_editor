@@ -4,7 +4,7 @@ require_relative '../lib/image'
 require_relative '../lib/errors'
 
 describe BitmapEditor do
-  describe 'run' do
+  describe '#run' do
     path = './examples'
     Dir.foreach(path) do |filename|
       next if filename == '.' || filename == '..' || (filename =~ /\Aresult/) == 0
