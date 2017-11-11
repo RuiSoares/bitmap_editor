@@ -34,7 +34,7 @@ class BitmapEditor
         when 'S'
           Show.new(args, bitmap).run
         else
-          raise 'unrecognised command :('
+          raise BitmapErrors::InvalidCommand.new
         end
       rescue => error
         puts "Line #{index}: " + error.message
