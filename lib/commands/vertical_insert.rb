@@ -1,4 +1,5 @@
-require_relative 'insertion'
+require 'commands/insertion'
+
 class VerticalInsert
   include Insertion
 

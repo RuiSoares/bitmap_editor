@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../lib/image'
+require 'image'
 
 describe Image do
   describe '#init' do

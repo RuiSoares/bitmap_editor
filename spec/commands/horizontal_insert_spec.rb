@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../lib/commands/horizontal_insert'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/horizontal_insert'
+require 'image'
+require 'errors'
 
 describe HorizontalInsert do
   describe '#initialize' do
@@ -59,7 +59,7 @@ describe HorizontalInsert do
       c = 'C'
 
       HorizontalInsert.new([x1,x2,y,c], bitmap).run
-      
+
       expect(bitmap.pixels).to eq(expected.pixels)
     end
   end

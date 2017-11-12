@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../lib/commands/init'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/init'
+require 'image'
+require 'errors'
 
 describe Init do
   describe '#initialize' do
@@ -24,9 +24,12 @@ describe Init do
       n = 5
 
       bitmap = Init.new([m,n]).run
-      
+
       expect(bitmap.rows).to eq(n)
       expect(bitmap.cols).to eq(m)
+      bitmap.pixels.each do |row|
+        expect(row).to all(eq('O'))
+      end
     end
   end
 end

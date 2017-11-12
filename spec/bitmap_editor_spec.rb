@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../lib/bitmap_editor'
-require_relative '../lib/image'
-require_relative '../lib/errors'
+require 'bitmap_editor'
+require 'image'
+require 'errors'
 
 describe BitmapEditor do
   describe '#run' do

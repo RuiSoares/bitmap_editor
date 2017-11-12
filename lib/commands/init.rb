@@ -1,10 +1,15 @@
+BITMAP_MAX_SIZE = 250
+
 class Init
   def initialize(args)
     raise BitmapErrors::NumberOfArgumentsError.new('I',2) if(args.size != 2)
     cols, rows = args
     @rows = rows.to_i
     @cols = cols.to_i
-    raise BitmapErrors::ImageLimitError.new if @cols < 0 || @cols > 250 || @rows < 0 || @rows > 250
+    if @cols < 0 || @cols > BITMAP_MAX_SIZE ||
+       @rows < 0 || @rows > BITMAP_MAX_SIZE
+      raise BitmapErrors::ImageLimitError.new
+    end
   end
 
   def run

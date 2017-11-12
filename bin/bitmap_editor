@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
-require './lib/bitmap_editor'
+$LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
+
+require 'bitmap_editor'
 
 BitmapEditor.new.run ARGV.first

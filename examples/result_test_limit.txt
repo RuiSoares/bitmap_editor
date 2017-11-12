@@ -1,0 +1,2 @@
+Line 1: Coordinates must be inside image dimensions (25,250)
+Line 2: Coordinates must be inside image dimensions (25,250)

@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../lib/commands/show'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/show'
+require 'image'
+require 'errors'
 
 describe Show do
   describe '#initialize' do

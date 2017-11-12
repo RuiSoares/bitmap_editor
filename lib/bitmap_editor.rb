@@ -1,13 +1,11 @@
-require_relative 'image'
-require_relative 'errors'
-require_relative 'commands/init'
-require_relative 'commands/clear'
-require_relative 'commands/insert'
-require_relative 'commands/vertical_insert'
-require_relative 'commands/horizontal_insert'
-require_relative 'commands/show'
-
-#TODO fix requires
+require 'image'
+require 'errors'
+require 'commands/init'
+require 'commands/clear'
+require 'commands/insert'
+require 'commands/vertical_insert'
+require 'commands/horizontal_insert'
+require 'commands/show'
 
 class BitmapEditor
   def run(file)

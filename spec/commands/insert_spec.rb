@@ -1,14 +1,14 @@
 require 'spec_helper'
-require_relative '../../lib/commands/insert'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/insert'
+require 'image'
+require 'errors'
 
 describe Insert do
   describe '#initialize' do
     context 'when invalid coordinates' do
       it 'raises an out of range error' do
         bitmap = Image.new(4,4)
-        
+
         expect { Insert.new([5,5,'A'], bitmap) }.to raise_error(BitmapErrors::OutOfRangeError)
       end
     end

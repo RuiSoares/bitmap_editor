@@ -41,7 +41,7 @@ module BitmapErrors
 
   class NotAColourError < StandardError
     def message
-      "C must be a capital letter"
+      "Colour (C) must be a capital letter"
     end
   end
 

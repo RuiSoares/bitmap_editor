@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../lib/commands/clear'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/clear'
+require 'image'
+require 'errors'
 
 describe Clear do
   describe '#initialize' do
@@ -26,8 +26,6 @@ describe Clear do
     it 'sets all pixels of bitmap to white' do
       bitmap = Image.new(4,4)
       bitmap.insert(2,2,'F')
-
-      expect(bitmap.pixel(2,2)).to eq 'F'
 
       Clear.new([], bitmap).run
 

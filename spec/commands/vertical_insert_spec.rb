@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../lib/commands/vertical_insert'
-require_relative '../../lib/image'
-require_relative '../../lib/errors'
+require 'commands/vertical_insert'
+require 'image'
+require 'errors'
 
 describe VerticalInsert do
   describe '#initialize' do
