@@ -6,6 +6,7 @@ require 'commands/insert'
 require 'commands/vertical_insert'
 require 'commands/horizontal_insert'
 require 'commands/show'
+require 'commands/fill'
 
 class BitmapEditor
   def run(file)
@@ -31,6 +32,8 @@ class BitmapEditor
           HorizontalInsert.new(args, bitmap).run
         when 'S'
           Show.new(args, bitmap).run
+        when 'F'
+          Fill.new(args, bitmap).run
         else
           raise BitmapErrors::InvalidCommand.new
         end

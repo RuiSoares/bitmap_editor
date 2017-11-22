@@ -23,6 +23,10 @@ class Image
     end
   end
 
+  def to_s
+    pixels.map {|row| row.join }.join("\n") + "\n"
+  end
+
   def rows
     @rows
   end
