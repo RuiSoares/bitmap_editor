@@ -39,10 +39,10 @@ class Image
     @pixels
   end
 
-  def in_range?(start_row, end_row, start_col, end_col)
-    start_row > 0 &&
-    end_row <= rows &&
-    start_col > 0 &&
-    end_col <= cols
+  def in_range?(row, col)
+    row > 0 &&
+    row <= rows &&
+    col > 0 &&
+    col <= cols
   end
 end

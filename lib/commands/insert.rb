@@ -10,7 +10,7 @@ class Insert
     @bitmap = bitmap
     @row = row.to_i
     @col = col.to_i
-    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@row, @row, @col, @col)
+    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@row, @col)
     raise BitmapErrors::NotAColourError.new unless is_colour?(@colour)
   end
 

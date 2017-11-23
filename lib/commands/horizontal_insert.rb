@@ -11,7 +11,9 @@ class HorizontalInsert
     @row = row.to_i
     @start_col = start_col.to_i
     @end_col = end_col.to_i
-    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@row, @row, @start_col, @end_col)
+    unless @bitmap.in_range?(@row, @start_col) && @bitmap.in_range?(@row, @end_col)
+      raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows)
+    end
     raise BitmapErrors::StartAfterEndError.new if @start_col > @end_col
     raise BitmapErrors::NotAColourError.new unless is_colour?(@colour)
   end

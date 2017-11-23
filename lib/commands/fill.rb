@@ -11,7 +11,7 @@ class Fill
     @bitmap = bitmap
     @row = row.to_i
     @col = col.to_i
-    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@row, @row, @col, @col)
+    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@row, @col)
     raise BitmapErrors::NotAColourError.new unless is_colour?(@colour)
   end
 
@@ -25,9 +25,13 @@ class Fill
     current_colour = @bitmap.pixel(row, col)
     @bitmap.insert(row, col, colour)
 
-    fill(row, col+1, colour) if @bitmap.in_range?(row, row, col+1, col+1) && @bitmap.pixel(row, col+1) == current_colour
-    fill(row, col-1, colour) if @bitmap.in_range?(row, row, col-1, col-1) && @bitmap.pixel(row, col-1) == current_colour
-    fill(row+1, col, colour) if @bitmap.in_range?(row+1, row+1, col, col) && @bitmap.pixel(row+1, col) == current_colour
-    fill(row-1, col, colour) if @bitmap.in_range?(row-1, row-1, col, col) && @bitmap.pixel(row-1, col) == current_colour
+    fill(row, col+1, colour) if is_fillable?(row, col+1, current_colour)
+    fill(row, col-1, colour) if is_fillable?(row, col-1, current_colour)
+    fill(row+1, col, colour) if is_fillable?(row+1, col, current_colour)
+    fill(row-1, col, colour) if is_fillable?(row-1, col, current_colour)
+  end
+
+  def is_fillable?(row, col, colour)
+    @bitmap.in_range?(row, col) && @bitmap.pixel(row, col) == colour
   end
 end

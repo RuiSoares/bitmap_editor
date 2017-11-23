@@ -11,7 +11,9 @@ class VerticalInsert
     @start_row = start_row.to_i
     @end_row = end_row.to_i
     @col = col.to_i
-    raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows) unless @bitmap.in_range?(@start_row, @end_row, @col, @col)
+    unless @bitmap.in_range?(@start_row, @col) && @bitmap.in_range?(@end_row, @col)
+      raise BitmapErrors::OutOfRangeError.new(@bitmap.cols, @bitmap.rows)
+    end
     raise BitmapErrors::StartAfterEndError.new if @start_row > @end_row
     raise BitmapErrors::NotAColourError.new unless is_colour?(@colour)
   end

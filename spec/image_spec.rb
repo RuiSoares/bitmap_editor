@@ -55,7 +55,7 @@ describe Image do
       it 'returns false' do
         image = Image.new(4,5)
 
-        expect(image.in_range?(6,6,6,6)).to be false
+        expect(image.in_range?(6,6)).to be false
       end
     end
 
@@ -63,7 +63,7 @@ describe Image do
       it 'returns true' do
         image = Image.new(4,5)
 
-        expect(image.in_range?(2,2,3,4)).to be true
+        expect(image.in_range?(2,4)).to be true
       end
     end
   end
